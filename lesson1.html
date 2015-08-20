@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <title> LearnGuitar-lesson1</title>
+  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+ </head>
+ <body class="main-window">
+  <style type="text/css">
+.red{ color:red;}
+</style>
+  <div  id="showclock" style="text-align:center;
+  		margin:auto auto;
+  		height:500px;   
+        line-height:500px;
+        font-size: 100px">
+  </div>
+<script type="text/javascript">
+var arrname = ["C","D","E","F","G","A","B"];
+var arrsingname = ["1","2","3","4","5","6","7"];
+var id;
+var isrunning;
+var speed = 1000;
+$(document).ready(function(){
+	id = setInterval(show, speed);
+	isrunning = true;
+});
+$(document).on('keyup', '.main-window', function(){
+	if(isrunning)
+	{
+    	clearInterval(id);
+    	$('#showclock').addClass('red');
+    	isrunning = false;
+	}else{
+		id = setInterval(show, speed);	
+		$('#showclock').removeClass('red');
+		isrunning = true;		
+	} 
+});
+function show() {
+	var r = arrname[getRandom(6)];
+	$('#showclock').text(r);	
+}
+function getRandom(n){
+        return Math.floor(Math.random()*n);
+}
+</script>
+
+</div>
+</body>
+</html>  
+
